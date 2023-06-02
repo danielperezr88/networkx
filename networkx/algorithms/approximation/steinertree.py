@@ -61,7 +61,7 @@ def _mehlhorn_steiner_tree(G, terminal_nodes, weight):
         su, sv = s[u], s[v]
         weight_here = d_1[(u, su)] + data.get(weight, 1) + d_1[(v, sv)]
         if not G_1_prime.has_edge(su, sv):
-            G_1_prime.add_edge(su, sv, weight=weight_here)
+            G_1_prime.add_edge(su, sv, **{weight:weight_here})
         else:
             new_weight = min(weight_here, G_1_prime[su][sv][weight])
             G_1_prime.add_edge(su, sv, weight=new_weight)
